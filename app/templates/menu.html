@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Menu{% endblock %}
+
+{% block content %}
+<h2>Menu</h2>
+<form action="{{ url_for('place_order') }}" method="POST">
+  <ul>
+    {% for meal in meals %}
+    <li>
+      <h3>{{ meal.name }}</h3>
+      <p>Description: {{ meal.description }}</p>
+      <p>Price: ${{ meal.price }}</p>
+      <!-- Add an image if available -->
+      {% if meal.image %}
+      <img src="{{ meal.image }}" alt="{{ meal.name }}" width="200">
+      {% endif %}
+      <!-- Add radio button for meal selection -->
+      <input type="radio" name="meal_id" value="{{ meal.id }}"> Select
+    </li>
+    {% endfor %}
+  </ul>
+  <label for="payment_method">Select Payment Method:</label>
+  <select id="payment_method" name="payment_method">
+    <option value="student_id_card">Student ID Card</option>
+    <option value="mpesa">M-Pesa</option>
+  </select>
+  <button type="submit">Place Order</button>
+</form>
+{% endblock %}

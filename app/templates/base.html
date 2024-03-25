@@ -1,0 +1,22 @@
+<!-- base.html -->
+<head>
+    <!-- Other meta tags and scripts -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<header>
+    <h1>KNP Meals Management System</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('show_menu') }}">Menu</a></li>
+            <li><a href="{{ url_for('get_users') }}">Users</a></li>
+            <li><a href="{{ url_for('get_transactions') }}">Transactions</a></li>
+            {% if 'username' in session %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

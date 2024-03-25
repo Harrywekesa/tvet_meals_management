@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Welcome to KNP Meals Management System!</h1>
+    <ul class="navigation">
+        <li><a href="{{ url_for('get_meals') }}">View Meals</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+{% endblock %}
